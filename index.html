@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="image"></div>
+
+    <div class="wrap">
+        <h4><a target="_blank" href="https://ru.wikipedia.org/wiki/Стеганография">Подробнее о стегонографии</a></h4>
+        <p>Стеганография - способ передачи или хранения информации с учётом сохранения в тайне самого факта такой
+            передачи.</p>
+
+        <h2>Зашифровывание текста в картинке</h2>
+        <h4>Введите сначала сообщение, чтобы скрыть его внутри изображения. Если поле не заполняется, сообщение будет:
+            "Привет". Максимальная длина сообщения - 50 символов.</h4>
+        <label>Введите сообщение: </label>
+        <input type="password" id="message" maxlength="50" title="Не больше 50 символов"
+            placeholder="Введите сообщение"></br>
+        <label>Загрузите картинку (форматы jpg, png)</label>
+        <input type="file" id="imageLoader" name="imageLoader" />
+        <button id="saveButton">Сохранить</button> </br>
+        <canvas id="imageCanvas"></canvas>
+        <canvas id="textCanvas"></canvas>
+        <hr>
+        <h2>Расшифровывание текста из картинки</h2>
+        <label>Загрузите картинку (форматы jpg, png)</label>
+        <input type="file" id="imageLoader2" name="imageLoader2" /><br />
+        <canvas id="imageCanvas2"></canvas>
+    </div>
+</body>
+<script src="main.js"></script>
+
+</html>
