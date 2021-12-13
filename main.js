@@ -3,6 +3,7 @@ imageLoader.addEventListener('change', handleImage, false);
 var canvas = document.getElementById('imageCanvas');
 var ctx = canvas.getContext('2d');
 var messageInput = document.getElementById('message');
+var h4 = document.getElementById('h4');
 
 var textCanvas = document.getElementById('textCanvas');
 var saveButton = document.getElementById('saveButton');
@@ -37,9 +38,23 @@ function handleImage(e) {
             textCanvas.width = img.width;
             textCanvas.height = img.height;
 
-            tctx.font = "30px Arial";
+            tctx.font = "25px Arial";
             var messageText = (messageInput.value.length) ? messageInput.value : 'Привет';
-            tctx.fillText(messageText, 10, 50);
+            h4.innerHTML = "Введите сначала сообщение, чтобы скрыть его внутри изображения. Если поле не заполняется, сообщение будет: 'Привет'. C учетом выбранного файла максимальная длина вашего сообщения - " + Math.round((img.width / 17) * (img.height / 29)/ 10) * 10 +" символов. Вы ввели " + messageText.length;
+            for (let i = 1; i < 20; i++) {
+                let out = 0;
+                if (messageInput.value.length > i * 50) {
+                    for (let k = (i * 50 - 50); k <= (i * 50); k++) {
+                        tctx.fillText(messageText[k], (out += 15), i * 30);
+                    }
+                }
+                else {
+                    for (let k = (i * 50) - 50; k < messageText.length; k++) {
+                        tctx.fillText(messageText[k], out += 15, i * 30);
+                    }
+                    i = 20;
+                }
+            }
             ctx.drawImage(img, 0, 0);
             var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
             var textData = tctx.getImageData(0, 0, canvas.width, canvas.height);
